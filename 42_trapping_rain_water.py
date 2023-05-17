@@ -5,14 +5,15 @@ class Solution:
             return 0
         trapped = 0
         lp = 0
-        rp = height.index(max(height))
-        while rp <= len(height):
-            for i in range(rp):
-                if height[i] >= height[lp]:
-                    lp = i
-                trapped += min(height[rp],height[lp])- height[i]
-            lp = rp
-            rp = height.index(max(height[lp+1:]))
+        mh = max(height)
+        for i in range(len(height)-1):
+            if height[i] >= height[lp]:
+                lp = i
+            if height[i] == mh:
+                mh = max(height[i+1:])                
+            trapped += min(height[lp],mh)- height[i]
+
+            
         print("hello")
         print(trapped)
 
