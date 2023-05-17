@@ -11,11 +11,10 @@ class Solution:
                 lp = i
             if height[i] == mh:
                 mh = max(height[i+1:])                
-            trapped += min(height[lp],mh)- height[i]
+            trapped += max(0,min(height[lp],mh)- height[i])
+        return trapped
 
             
-        print("hello")
-        print(trapped)
 
 height = [0,1,0,2,1,0,1,3,2,1,2,1]
 obj = Solution()
